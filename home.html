@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <title>Josh Solomon Home</title>
+    <style>
+        html, body {
+            padding: 0px;
+            margin: 0px;
+            background-color: black;
+            color: white;
+            scroll-behavior: smooth;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        #container {
+            width: 70%;
+            margin: auto;
+            position: relative;
+        }
+
+        #header {
+            width: 100%;
+            height: 100vh;
+        }
+        #navbar {
+            width: 70%;
+            position: fixed;
+            overflow: auto;
+            margin: auto;
+            z-index: 1;
+        }
+        #navbar p {
+            font-size: 2em;
+            color: #E56A6A;
+            float: left;
+            margin-bottom: 0px;
+            position: relative;
+            left: 10px;
+            z-index: 2;
+        }
+        #navbar #nav {
+            position: relative;
+            right: 10px;
+            z-index: 2;
+        }
+        #navbar a {
+            padding: 30px;
+            margin: 0px;
+            height: 3vh;
+            text-decoration: none;
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+            float: right;
+            transition: 0.2s ease-in-out;
+            margin-bottom: 0px;
+        }
+        #navbar a:hover {
+            color: #E56A6A;
+        }
+        #navbar .overlay {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8vh;
+            background-color: black;
+            opacity: 0.9;
+            z-index: 1;
+        }
+        #title {
+            font-size: 2.5em;
+            font-family: "Roboto", sans-serif;
+            position: absolute;
+            top: 35vh;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* About Section */
+        #about {
+            width: 100%;
+            height: 90vh;
+            padding-top: 10vh;
+        }
+        #sub-about {
+            width: 100%;
+            height: auto;
+            margin-bottom: 5vh;
+            overflow: auto;
+        }
+        #sub-about img {
+            float: left;
+            width: 20%;
+            border-radius: 50%;
+        }
+        #sub-about p {
+            float: left;
+            width: 76%;
+            padding: 2%;
+            padding-top: 0px;
+            margin-top: 0px;
+            font-size: 1.8rem;
+        }
+        .about-div {
+            width: 25%;
+            height: 30vh;
+            margin: 0px;
+            position: relative;
+            float: left;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .about-div img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .about-div p {
+            font-size: 1.5em;
+            position: absolute;
+            text-align: center;
+            visibility: hidden;
+            z-index: 1;
+            padding: 0px;
+            margin: 0px;
+        }
+        .about-div .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.8;
+            visibility: hidden;
+            z-index: 0;
+        }
+        .about-div:hover .overlay {
+            visibility: visible;
+        }
+        .about-div:hover p {
+            visibility: visible;
+        }
+
+        /* Projects Section */
+        #projects {
+            width: 100%;
+            height: 90vh;
+            padding-top: 10vh;
+            margin-top: 10vh;
+        }
+        .project-div {
+            width: 29%;
+            position: relative;
+            text-align: center;
+            border: 2px solid #E56A6A;
+            height: 50vh;
+            padding: 5% 1%;
+            float: left;
+            margin: 1%;
+        }
+        .project-div h3 {
+            width: 100%;
+            font-size: 2.5em;
+            margin: 0px;
+            padding: 0px;
+        }
+        .project-div p {
+            width: 100%;
+            font-size: 1.5em;
+            margin-bottom: 10%;
+        }
+        .project-div .project-button {
+            width: 25%;
+            text-decoration: none;
+            color: white;
+            height: 5%;
+            padding: 3% 5%;
+            background-color: #E56A6A;
+            transition: 0.2s ease-in-out;
+        }
+        .project-div .project-button:hover {
+            background-color: white;
+            color: #E56A6A;
+            border: 2px solid #E56A6A
+        }
+        .project-div a {
+            text-decoration: none;
+            color: #E56A6A;
+            transition: 0.1s ease-in-out;
+        }
+        .project-div a:hover {
+            color: white;
+        }
+
+        /* Experience Section */
+        #experience {
+            width: 100%;
+            height: auto;
+            padding-top: 10vh;
+        }
+
+        /* Resume Grid Layout */
+		.resume {
+			grid-gap: 20px;
+			width: 100%;
+			margin: auto;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-areas: 
+				"name"
+				"photo"
+				"research"
+				"work"
+				"education"
+				"skills"
+				"clubs"
+				"projects"
+				"awards";
+		}
+		@media (min-width: 1000px) {
+			.resume {
+				grid-template-columns: 2fr 1fr;
+				grid-template-areas: 
+					"name name"
+					"photo photo"
+					"research research"
+					"work work"
+					"education education"
+					"skills skills"
+					"clubs clubs"
+					"projects projects"
+					"awards awards";
+			}
+		}
+		@media (min-width: 1200px) {
+			.resume {
+				display: grid;
+				grid-template-columns: 2fr 1fr;
+				grid-template-rows: 0.5fr 0.5fr 0.5fr 0.4fr 0.5fr;
+				grid-template-areas: 
+					"name photo"
+					"work research"
+					"work education"
+					"skills clubs"
+					"projects awards";
+			}
+		}
+		.name {
+			grid-area: name;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.photo {
+			grid-area: photo;
+		}
+		.awards {
+			grid-area: awards;
+		}
+		.work {
+			grid-area: work;
+		}
+		.education {
+			grid-area: education;
+		}
+		.research {
+			grid-area: research;
+		}
+		.skills {
+			grid-area: skills;
+		}
+		.projects {
+			grid-area: projects;
+		}
+		.clubs {
+			grid-area: clubs;
+		}
+
+
+		/* Resume Design */
+		#name-div {
+			text-align: center;
+		}
+		.name #nm {
+			font-size: 4.5em;
+			margin-bottom: 4%;
+			color: white;
+		}
+		.name a {
+			background-color: #E56A6A;
+			text-decoration: none;
+			font-size: 1em;
+			text-align: center;
+			border: 2px solid #E56A6A;
+			color: white;
+			margin: auto;
+			width: 25%;
+			padding: 2%;
+			display: block;
+			border-radius: 2px;
+			transition: 0.3s ease-in-out;
+		}
+		.name a:hover {
+			background-color: white;
+			border: 2px solid #E56A6A;
+			color: #E56A6A;
+		}
+		.photo img {
+			border: 2px solid #E56A6A;
+			border-radius: 50%;
+			margin: auto;
+			justify-content: center;
+			align-items: center;
+			display: flex;
+		}
+		.section-header {
+			margin-top: 15px;
+			margin-bottom: 15px;
+			letter-spacing: 3px;
+		}
+		.skills-section {
+			float: left;
+			width: 33.3%;
+		}
+		.skills-section ul{
+			list-style: none;
+			padding-right: 40px;
+			text-align: center;
+		}
+		.skills-section li {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.skills-section h3 {
+			text-align: center;
+			font-size: 24px;
+			padding-top: 0px;
+			margin-top: 0px;
+		}
+		.work-title {
+			margin: 0px;
+			padding: 0px;
+			font-size: 26px;
+		}
+		.work-job {
+			margin: 0px;
+			padding-top: 10px;
+			color: #E56A6A;
+			float: left;
+		}
+		.dates {
+			margin: 0px;
+			padding: 0px;
+			margin-top: 10px;
+			margin-left: 10px;
+			float: left;
+		}
+		.research .dates {
+			margin-left: 0px;
+		}
+		.hr-bottom {
+			margin-bottom: 30px;
+		}
+		.awards li {
+			margin-top: 10px;
+			margin-bottom: 10px;
+        }
+        
+        /* Contact */
+        #contact {
+            width: 100%;
+            height: auto;
+            padding-top: 10vh;
+        }
+
+        /* Miscellaneous */
+        .underline {
+            width: 20%;
+            outline: 2px solid #E56A6A;
+            margin-left: 2px;
+            margin-bottom: 40px;
+        }
+        .sub-title {
+            font-size: 3em;
+            font-family: "Roboto", sans-serif;
+            margin-bottom: 20px;
+        }
+        .clearfloat {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <!-- Header Start -->
+        <div id="header">
+            <div id="navbar">
+                <p>JS</p>
+                <div id="nav">
+                    <a href="#contact">Contact</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#about">About</a>
+                    <a href="#">Home</a>
+                </div>
+                <div class="overlay"></div>
+            </div>
+
+            <div class="clearfloat"></div>
+
+            <div id="title">
+                <h1>My name is Josh Solomon.<br>I am 
+                    <span class="txt-rotate" data-period="2000" data-rotate='[ "an engineer.", "a student.", "a Trojan.", "a web designer.", "a moviegoer.", "a brother.", "a teacher.", "a friend." ]'></span>
+                </h1>
+                <section class="underline"></section>
+            </div>
+        </div><!-- Header End -->
+    
+        <!-- About Start -->
+        <div id="about">
+            <h2 class="sub-title">About Me</h2>
+            <section class="underline"></section>
+            <div id="sub-about">
+                <img src="img/about-pic.jpg" alt="Profile Picture">
+                <p>I am a rising Junior at the Unviersity of Southern California studying Electrical and Computer Engineering.<br><br>I love robots, movies, and web-design.<br><br>Here are a couple things I enjoy outside of the classroom.</p>
+            </div>
+            <div class="clearfloat"></div>
+
+            <div class="about-div">
+                <img src="img/foundation.jpg" alt="Foundation Series">
+                <p>Favorite Book:<br>Foundation</p>
+                <div class="overlay"></div>
+            </div>
+            <div class="about-div">
+                <img src="img/gump.jpg" alt="Forrest Gump">
+                <p>Favorite Movie:<br>Forrest Gump</p>
+                <div class="overlay"></div>
+            </div>
+            <div class="about-div">
+                <img src="img/iron-man.jpg" alt="Iron Man">
+                <p>Favorite Superhero:<br>Iron Man</p>
+                <div class="overlay"></div>
+            </div>
+            <div class="about-div">
+                <img src="img/pittsburgh.jpg" alt="Pittsburgh">
+                <p>Hometown:<br>Pittsburgh</p>
+                <div class="overlay"></div>
+            </div>
+            <div class="about-div">
+                <img src="img/reeses.png" alt="Reese's">
+                <p>Favorite Candy:<br>Reese's</p>
+                <div class="overlay"></div>
+            </div>
+            <div class="about-div">
+                <img src="img/cpp.png" alt="C Plus Plus">
+                <p>Favorite Language:<br>C++</p>
+                <div class="overlay"></div>
+            </div>
+            <div class="about-div">
+                <img src="img/basketball.jpg" alt="Basketball">
+                <p>Favorite Sport:<br>Basketball</p>
+                <div class="overlay"></div>
+            </div>
+            <div class="about-div">
+                <img src="img/skyrim.jpeg" alt="Skyrim">
+                <p>Favorite Video Game:<br>Skyrim</p>
+                <div class="overlay"></div>
+            </div>
+
+        </div><!-- About End -->
+
+        <!-- Project Start -->
+        <div id="projects">
+            <h2 class="sub-title">Projects</h2>
+            <section class="underline"></section>
+
+            <div class="project-div">
+                <h3>A Hint of Cinema</h3>
+                <p>Geared towards cinemaphiles, A Hint of Cinema is my website for reviews on the latest and greatest films - along with a couple classics.  The project utilizes HTML, CSS, JavaScript, and C++ on the backend.  If you're into coding, movies, or even just curious, check it out below!</p>
+                <a class="project-button" target="_blank" href="https://viterbi-web.usc.edu/~jdsolomo/itp104/final_project/main.html">Show Me</a>
+            </div>
+            <div class="project-div">
+                <h3>Robot Exploration Algorithm</h3>
+                <p>This algorithm was created and developed by researchers at several institutions around the country and can be found in <a target="_blank" href="Bidding Algo.pdf">this paper</a>.  My project took the algorithm they designed and implemented it in C++.  You can adjust the number of robots, the size of the space, the communication range, the sensing range, or the sensitivity or the "nearness" measure to improve your results.</p>
+                <a class="project-button" target="_blank" href="https://github.com/jdsolomo/Bidding_Algo_Implementation">Show Me</a>
+            </div>
+            <div class="project-div">
+                <h3>In Other News</h3>
+                <p>In Other News is a haven for those who feel overwhelmed by the day's most prolific story.  The website produces headlines and stories that aren't associated with the biggest headline of the day.  If you're feeling overwhelmed by a constant barrage of the same story and information, take a look at this!</p>
+                <a class="project-button" target="_blank" href="https://github.com/sarahrch/in-other-news">Show Me</a>
+            </div>
+        </div><!-- Projects End -->
+
+        <!-- Experience Start -->
+        <div id="experience">
+            <h2 class="sub-title">Experience</h2>
+            <section class="underline"></section>
+
+            <article class="resume">
+
+				<section class="name">
+					<div id="name-div">
+						<h1 id="nm">Joshua Solomon</h1>
+						<a target="_blank" href="./resume_pdf.pdf">PDF Version Here</a>
+					</div>
+				</section><!-- Name Section -->
+
+				<section class="photo">
+					<img src="./img/headshot.jpg" alt="Josh Solomon Headshot" />
+				</section><!-- Photo Section -->
+
+				<section class="awards">
+					<hr><p class="section-header">AWARDS AND HONORS</p><hr class="hr-bottom">
+					<p>Viterbi Dean's List (Fall 2018, 2019 and Spring 2019)</p>
+					<p>Commended Student in the National Merit Scholarship Program</p>
+					<p>WVT Rusch Honors Program Member</p>
+				</section><!-- Awards and Honors Section -->
+
+				<section class="work">
+					<hr><p class="section-header">WORK EXPERIENCE</p><hr class="hr-bottom">
+					<h3 class="work-title">Freshman Academy Coach</h3>
+					<h3 class="work-job">USC Viterbi</h3>
+					<h3 class="dates">August 2019 - December 2019</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Integrated over 30 students into the USC engineering community</li>
+						<li>Managed a budget of roughly 400 dollars</li>
+						<li>Planned weekly lectures and events</li>
+					</ul>
+					<h3 class="work-title">Teaching Assistant</h3>
+					<h3 class="work-job">USC Viterbi</h3>
+					<h3 class="dates">August 2019 - December 2019</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Developed students' knowledge of linear algebra</li>
+						<li>Taught students how to use MATLAB effectively</li>
+						<li>Relayed concerns and feedback to the instructor</li>
+					</ul>
+					<h3 class="work-title">Intern</h3>
+					<h3 class="work-job">Concepts Managment Group</h3>
+					<h3 class="dates">May 2019 - August 2019</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Developed an inventory system, that now holds over 1,000 items, using VBA for Excel, a Microsoft API, and a Barcode Scanner</li>
+						<li>Wrote scripts to manipulate and analyze member data using VBA for Excel</li>
+						<li>Interacted with customers and members over the phone and through emails to notify them of events and increase membership participation</li>
+					</ul>
+					<h3 class="work-title">Intern</h3>
+					<h3 class="work-job">The Citizen Science Lab</h3>
+					<h3 class="dates">May 2019 - August 2019</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Taught inner-city children and teenagers fundamental theories and definitons in algebra, physics, computer science, and electronics</li>
+						<li>Created a two-week curriculum that focuses on small electronics and C++</li>
+						<li>Learned about underlying theories in chemistry, biology, and zoology</li>
+					</ul>
+					<h3 class="work-title">Landscaper</h3>
+					<h3 class="work-job">Lisowski Landscaping</h3>
+					<h3 class="dates">Summer 2017, Summer 2018</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Created custom landscapes tailored to customers' preferences</li>
+						<li>Learned how to develop and foster connections with coworkers</li>
+					</ul>
+				</section><!-- Work History Section -->
+
+				<section class="education">
+					<hr><p class="section-header">EDUCATION</p><hr class="hr-bottom">
+					<h3 class="work-title">University of Southern California</h3>
+					<h3 class="work-job">Los Angeles, CA</h3>
+					<h3 class="dates">August 2018 - May 2022</h3>
+					<div class="clearfloat"></div>
+					<p>B.S. Electrical and Computer Engineering</p>
+					<p>GPA: 3.90/4.00</p>
+					<h3 class="work-title">Deer Lakes High School</h3>
+					<h3 class="work-job">Russelton, PA</h3>
+					<h3 class="dates">August 2014 - May 2018</h3>
+					<div class="clearfloat"></div>
+				</section>
+				<section class="research">
+					<hr><p class="section-header">RESEARCH</p><hr class="hr-bottom">
+					<h3 class="work-title">Research Assistant</h3>
+					<h3 class="work-job">Autonomous Networks Research Group</h3>
+					<h3 class="dates">January 2020 - Present</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Created five 3D environments in Gazebo</li>
+						<li>Developed an understanding of the Robot Operating System</li>
+						<li>Assisting in the design of an algorithm that will map an environment using a network of distributed Turtlebots</li>
+					</ul>
+				</section><!-- Education Section -->
+
+				<section class="skills">
+					<hr><p class="section-header">SKILLS</p><hr class="hr-bottom">
+					<div class="skills-section">
+					<h3>Coding</h3>
+						<ul>
+							<li>C/C++</li>
+							<li>Python</li>
+							<li>HTML/CSS</li>
+							<li>MATLAB</li>
+							<li>VBA</li>
+							<li>Git</li>
+						</ul>
+					</div>
+					<div class="skills-section">
+						<h3>Hardware</h3>
+						<ul>
+							<li>Oscilloscope</li>
+							<li>Waveform Generator</li>
+							<li>DC Power Supply</li>
+							<li>Soldering Iron</li>
+							<li>Turtlebot3</li>
+							<li>Raspberry Pi</li>
+						</ul>
+					</div>
+					<div class="skills-section">
+						<h3>OS</h3>
+						<ul>
+							<li>Windows</li>
+							<li>Linx (Ubuntu)</li>
+							<li>ROS</li>
+							<li>RIOT</li>
+						</ul>
+					</div>
+				</section><!-- Skills Section -->
+
+				<section class="projects">
+					<hr><p class="section-header">PROJECTS</p><hr class="hr-bottom">
+					<h3 class="work-title">Quadcopter</h3>
+					<h3 class="work-job">IEEE Project Team</h3>
+					<h3 class="dates">August 2019 - Present</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Designed a body to house avionics equipment for a quadcopter</li>
+						<li>Learned how to use SolidWorks to visualize and manipulate body designs</li>
+					</ul>
+					<h3 class="work-title">IoT Temperature Tracker</h3>
+					<h3 class="work-job">USC Networks and Distributed Systems</h3>
+					<h3 class="dates">August 2019 - December 2019</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Designed a home IoT system with easily deployable, batter-powered nodes that will detect the intensity of light in each room of a house</li>
+						<li>Utilized Paho MQTT, UDP, and HTTP to transfer this data between nodes and to the user</li>
+						<li>Developed my knowledge of threading, Raspberry PI's, and analog to digital converters</li>
+					</ul>
+					<h3 class="work-title">Inventory Management System</h3>
+					<h3 class="work-job">Concepts Management Group</h3>
+					<h3 class="dates">May 2019 - August 2019</h3>
+					<div class="clearfloat"></div>
+					<ul>
+						<li>Learned VBA for Excel over the course of two months to design a data management structure</li>
+						<li>Coupled Excel's Interrupt procedures with a Microsoft API and the iPhone's ability to scan barcodes to manage the physical storage of inventory</li>
+						<li>Developed an additional backup system using the company's existing IT structure to ensure that data can be accessed for audits</li>
+					</ul>
+				</section><!-- Projects Section -->
+
+				<section class="clubs">
+					<hr><p class="section-header">CLUBS</p><hr class="hr-bottom">
+					<h3 class="work-title">Academic Director</h3>
+					<h3 class="work-job">IEEE at USC</h3>
+					<h3 class="dates">August 2019 - Present</h3>
+					<div class="clearfloat"></div>
+					<br>
+					<h3 class="work-title">Recruitment Coordinator</h3>
+					<h3 class="work-job">Theta Tau</h3>
+					<h3 class="dates">August 2018 - Present</h3>
+					<div class="clearfloat"></div>
+				</section><!-- Clubs Section -->
+
+			</article><!-- End Resume -->
+        </div><!-- Experience End -->
+
+        <div id="contact">
+            <h2 class="sub-title">Contact Me</h2>
+            <section class="underline"></section>
+
+            <form action="confirmation.html">
+                <label for="txt_name">Name:</label><input name="txt_name" type="text">
+                <label for="txt_email">Email:</label><input name="txt_email" type="text">
+                <label for="short_msg"></label><textarea name="short_msg" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="title-animation.js"></script>
+</body>
+</html>
