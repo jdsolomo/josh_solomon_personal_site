@@ -378,8 +378,31 @@
         /* Contact */
         #contact {
             width: 100%;
-            height: auto;
+            height: 90vh;
             padding-top: 10vh;
+        }
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #E56A6A;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        input[type=submit] {
+            background-color: white;
+            color: #E56A6A;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+        }
+        input[type=submit]:hover {
+            background-color: #E56A6A;
+            color: white;
         }
 
         /* Miscellaneous */
@@ -685,10 +708,11 @@
             <h2 class="sub-title">Contact Me</h2>
             <section class="underline"></section>
 
-            <form action="confirmation.html">
-                <label for="txt_name">Name:</label><input name="txt_name" type="text">
-                <label for="txt_email">Email:</label><input name="txt_email" type="text">
-                <label for="short_msg"></label><textarea name="short_msg" cols="30" rows="10"></textarea>
+            <form id="contact-form" method="post" action="contact.php">
+                <label for="txt_name">Name:</label><input id="txt_name" name="name" type="text" placeholder="John Doe">
+                <label for="txt_email">Email:</label><input id="txt_email" name="email" type="text" placeholder="jdoe@gmail.com">
+                <label for="short_msg"></label><textarea id="short_msg" name="message" cols="30" rows="10" placeholder="Your text here..."></textarea>
+                <input type="submit" value="Submit">
             </form>
         </div>
 
